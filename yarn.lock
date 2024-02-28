@@ -10483,6 +10483,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-"zhang-wasm@file:../zhang/bindings/wasm/pkg":
-  version "0.1.0"
-  resolved "file:../zhang/bindings/wasm/pkg"
+zhang-wasm@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/zhang-wasm/-/zhang-wasm-0.1.1.tgz"
+  integrity sha512-AWVfmiRVUFsxGTwuENHLJFFDAQzfIHIKgeo1KkGQEfXQRbvwasiVZu+tzOqIX9B8k/7EJBXcukcmtFLwJNL9BA==
