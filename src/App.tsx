@@ -76,7 +76,7 @@ function App() {
                             content</Button>
                         </Group>
                         {!parseResult.zhang.pass() &&
-                            <Alert py={"xs"} variant="light" color="red" title="Beancount parse message"
+                            <Alert py={"xs"} variant="light" color="red" title="Zhang parse message"
                                    icon={<IconInfoCircle/>}>
                                 {parseResult.zhang.msg()}
                             </Alert>
