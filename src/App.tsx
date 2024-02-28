@@ -1,16 +1,29 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import {greet, parse} from "zhang-wasm";
+import {parse} from "zhang-wasm";
 import '@mantine/core/styles.css';
-import {Badge, Chip, Combobox, Container, Grid, Group, rem, Tabs, Text, Textarea} from "@mantine/core";
-import {IconAt, IconCheck, IconMessageCircle, IconPhoto, IconSettings, IconX} from '@tabler/icons-react';
+import {Alert, Badge, Button, Container, Group, rem, Stack, Tabs, Text} from "@mantine/core";
+import {IconCheck, IconInfoCircle, IconPhoto, IconSettings, IconX} from '@tabler/icons-react';
 import JsonView from '@uiw/react-json-view';
 import {useLocalStorage} from '@mantine/hooks';
 import CodeMirror from '@uiw/react-codemirror';
 
+
+const defualtContent = `
+option "title" "My Accounting"
+option "operating_currency" "CNY"
+
+1970-01-01 open Assets:BankCard CNY
+
+1970-01-01 open Expenses:Food CNY
+
+2023-12-02 "KFC" "VME50 Package"
+  Assets:BankCard -50 CNY
+  Expenses:Food
+`
+
 function App() {
-    const [content, setContent] = useLocalStorage({key: 'ZHANG-PLAYGROUND-CONTENT', defaultValue: ''});
+    const [content, setContent] = useLocalStorage({key: 'ZHANG-PLAYGROUND-CONTENT', defaultValue: defualtContent});
 
     const parseResult = parse(content);
     console.log("playground resuld", parseResult);
@@ -42,13 +55,6 @@ function App() {
                     <Tabs.Tab value="playground" leftSection={<IconPhoto/>}>
                         Playground
                     </Tabs.Tab>
-                    <Tabs.Tab value="gallery" leftSection={<IconPhoto/>}>
-                        Gallery
-                    </Tabs.Tab>
-                    <Tabs.Tab value="messages" leftSection={<IconMessageCircle/>}>
-                        Messages
-                    </Tabs.Tab>
-
                     {
                         parseResult.zhang.pass() &&
                         <Tabs.Tab value="zhang_store" leftSection={<IconSettings/>}>
@@ -65,37 +71,45 @@ function App() {
                 </Tabs.List>
 
                 <Tabs.Panel value="playground" py={"xs"} style={{minHeight: "80vh"}}>
-                    <CodeMirror
-                        value={content}
-                        height="80vh"
-                        width="100%"
-                        onChange={(value) => {
-                            setContent(value);
-                        }}
-                    />
-                </Tabs.Panel>
+                    <Stack>
+                        <Group><Button variant="default" onClick={() => setContent(defualtContent)}>Set as default
+                            content</Button>
+                        </Group>
+                        {!parseResult.zhang.pass() &&
+                            <Alert py={"xs"} variant="light" color="red" title="Beancount parse message"
+                                   icon={<IconInfoCircle/>}>
+                                {parseResult.zhang.msg()}
+                            </Alert>
+                        }
+                        {!parseResult.beancount.pass() &&
+                            <Alert py={"xs"} variant="light" color="red" title="Beancount parse message"
+                                   icon={<IconInfoCircle/>}>
+                                {parseResult.beancount.msg()}
+                            </Alert>
+                        }
 
-                <Tabs.Panel value="gallery" py={"xs"}>
-                    Gallery tab content
-                </Tabs.Panel>
-
-                <Tabs.Panel value="messages" py={"xs"}>
-                    Messages tab content
+                        <CodeMirror
+                            value={content}
+                            height="80vh"
+                            width="100%"
+                            onChange={(value) => {
+                                setContent(value);
+                            }}
+                        />
+                    </Stack>
                 </Tabs.Panel>
                 {
                     parseResult.zhang.pass() &&
                     <Tabs.Panel value="zhang_store" py={"xs"}>
-                        <JsonView value={parseResult.zhang.store()} collapsed/>
+                        <JsonView value={parseResult.zhang.store()} collapsed={1}/>
                     </Tabs.Panel>
                 }
                 {
                     parseResult.beancount.pass() &&
                     <Tabs.Panel value="beancount_store" py={"xs"}>
-                        <JsonView value={parseResult.beancount.store()} collapsed/>
-
+                        <JsonView value={parseResult.beancount.store()} collapsed={1}/>
                     </Tabs.Panel>
                 }
-
             </Tabs>
         </Container>
     );
