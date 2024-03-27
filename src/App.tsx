@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {parse} from "zhang-wasm";
 import '@mantine/core/styles.css';
-import {Alert, Badge, Button, Container, Group, rem, Stack, Tabs, Text} from "@mantine/core";
+import {Alert, Badge, Button, Container, Group, rem, Stack, Tabs, Text, Code} from "@mantine/core";
 import {IconCheck, IconInfoCircle, IconPhoto, IconSettings, IconX} from '@tabler/icons-react';
 import JsonView from '@uiw/react-json-view';
 import {useLocalStorage} from '@mantine/hooks';
@@ -26,9 +26,6 @@ function App() {
     const [content, setContent] = useLocalStorage({key: 'ZHANG-PLAYGROUND-CONTENT', defaultValue: defualtContent});
 
     const parseResult = parse(content);
-    console.log("playground resuld", parseResult);
-    console.log("playground resuld, zhang ", parseResult.zhang);
-    console.log("playground resuld, zhang ", parseResult.zhang.store());
 
     // console.log("playground resuld, zhang() ",  parseResult.zhang_parse_result());
     let passIcon = <IconCheck style={{width: rem(12), height: rem(12)}}/>;
@@ -75,16 +72,17 @@ function App() {
                         <Group><Button variant="default" onClick={() => setContent(defualtContent)}>Set as default
                             content</Button>
                         </Group>
+
                         {!parseResult.zhang.pass() &&
                             <Alert py={"xs"} variant="light" color="red" title="Zhang parse message"
-                                   icon={<IconInfoCircle/>}>
-                                {parseResult.zhang.msg()}
+                                icon={<IconInfoCircle/>}>
+                                <Code block color="transparent">{parseResult.zhang.msg()}</Code>
                             </Alert>
                         }
                         {!parseResult.beancount.pass() &&
                             <Alert py={"xs"} variant="light" color="red" title="Beancount parse message"
                                    icon={<IconInfoCircle/>}>
-                                {parseResult.beancount.msg()}
+                                <Code block color="transparent">{parseResult.beancount.msg()}</Code>
                             </Alert>
                         }
 
