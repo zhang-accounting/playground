@@ -25,7 +25,24 @@ option "operating_currency" "CNY"
 function App() {
     const [content, setContent] = useLocalStorage({key: 'ZHANG-PLAYGROUND-CONTENT', defaultValue: defualtContent});
 
-    const parseResult = parse(content);
+    let parseResult: any = {
+        zhang: {
+            pass: () => false,
+            store: () => {},
+            msg: () => "corePanic"
+        },
+        beancount: {
+            pass: () => false,
+            store: () => {},
+            msg: () => "corePanic"
+        }
+    };
+
+    try {
+        parseResult = parse(content);
+    }catch(e) {
+        console.log("core panic", e);
+    }
 
     // console.log("playground resuld, zhang() ",  parseResult.zhang_parse_result());
     let passIcon = <IconCheck style={{width: rem(12), height: rem(12)}}/>;
