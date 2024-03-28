@@ -57,8 +57,8 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.4
   zhang-wasm:
-    specifier: 0.1.5
-    version: 0.1.5
+    specifier: 0.1.6
+    version: 0.1.6
 
 devDependencies:
   '@craco/craco':
@@ -10224,6 +10224,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zhang-wasm@0.1.5:
-    resolution: {integrity: sha512-wXx3LeQRjftN2Yy2Rhhd6i+Yi91X1EXj4sPvTSoxTnOqZ3+qLl3j4GnOV1PetgUv+KrRQKvR40icdhM9Y9ENhw==}
+  /zhang-wasm@0.1.6:
+    resolution: {integrity: sha512-Pyaf2449ufQRBAd7zy9Yrr1uv47OthnEPCogeWxCmBuAmzsDBBmwOtcKaUv7Yf7nwoyxJKRbOj1cc9CohWRgXg==}
     dev: false
