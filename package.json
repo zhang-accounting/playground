@@ -20,7 +20,7 @@
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0",
-    "zhang-wasm": "0.1.6"
+    "zhang-wasm": "0.1.9"
   },
   "scripts": {
     "start": "PORT=3001 craco start",
@@ -29,17 +29,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

@@ -57,8 +57,8 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.4
   zhang-wasm:
-    specifier: 0.1.6
-    version: 0.1.6
+    specifier: 0.1.9
+    version: 0.1.9
 
 devDependencies:
   '@craco/craco':
@@ -1738,6 +1738,7 @@ packages:
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
     dependencies:
       '@humanwhocodes/object-schema': 2.0.2
       debug: 4.3.4
@@ -1751,6 +1752,7 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
+    deprecated: Use @eslint/object-schema instead
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -10224,6 +10226,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zhang-wasm@0.1.6:
-    resolution: {integrity: sha512-Pyaf2449ufQRBAd7zy9Yrr1uv47OthnEPCogeWxCmBuAmzsDBBmwOtcKaUv7Yf7nwoyxJKRbOj1cc9CohWRgXg==}
+  /zhang-wasm@0.1.9:
+    resolution: {integrity: sha512-hpdOc8oHN2oKmJTkvnVYx7HwH8ve/12BMpu1+N5IiajuT2+y6e3OKAYuSLx2zzP7rENL7YpT17wZMT8QzglLxA==}
     dev: false
